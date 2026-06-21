@@ -48,6 +48,9 @@ export default function Predictor() {
 
   const handlePredict = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
+    try {
       // Always connect directly to the live Render backend!
       // This bypasses the need for you to run python locally on your machine.
       let rawApiUrl = "https://california-house-price-prediction-ycx0.onrender.com";
