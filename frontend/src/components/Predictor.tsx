@@ -52,7 +52,9 @@ export default function Predictor() {
     setError(null);
     try {
       // In production, this should point to your Render backend URL
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const rawApiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      // Defensively trim spaces and remove trailing slashes just in case they were accidentally added in Vercel
+      const apiUrl = rawApiUrl.trim().replace(/\/+$/, "");
       const response = await axios.post(`${apiUrl}/api/predict`, formData);
       if (response.data.status === "success") {
         setPrediction(response.data.prediction);
