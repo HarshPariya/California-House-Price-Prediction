@@ -1,5 +1,7 @@
 # 🏠 California House Price Prediction Using Machine Learning
 
+🚀 **Live Demo:** [https://california-house-price-prediction-g4vbqt29g.vercel.app/](https://california-house-price-prediction-g4vbqt29g.vercel.app/)
+
 ## 📌 Project Overview
 
 This project predicts California house prices using Machine Learning techniques and compares multiple regression algorithms to identify the best-performing model. The project has been upgraded into a full-stack modern web application, allowing users to make real-time predictions through a beautiful interface.
