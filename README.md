@@ -272,11 +272,5 @@ California-House-Price-Prediction/
 **Harsh Pariya**  
 Aspiring AI/ML Engineer
 
-### Connect With Me
-- **LinkedIn:** https://linkedin.com/in/YOUR_LINKEDIN
-- **GitHub:** https://github.com/YOUR_USERNAME
-- **Portfolio:** https://YOUR_PORTFOLIO_LINK
-
----
 
 ⭐ *If you found this project useful, consider giving it a star!*
