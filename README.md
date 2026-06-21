@@ -107,7 +107,7 @@ This project is structured for easy deployment to cloud platforms:
 **Frontend (Vercel):**
 1. Connect your GitHub repository to [Vercel](https://vercel.com/).
 2. Set the Root Directory to `frontend`.
-3. Add an Environment Variable: `NEXT_PUBLIC_API_URL` pointing to your deployed Render URL.
+3. Click Deploy! (No environment variables needed—the Render API URL is securely integrated into the code).
 
 ---
 
