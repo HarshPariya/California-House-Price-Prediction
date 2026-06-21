@@ -1,6 +1,6 @@
 # 🏠 California House Price Prediction Using Machine Learning
 
-🚀 **Live Demo:** [https://california-house-price-prediction-g4vbqt29g.vercel.app/](https://california-house-price-prediction-g4vbqt29g.vercel.app/)
+🚀 **Live Demo:** [https://california-house-price-prediction-xi.vercel.app//](https://california-house-price-prediction-xi.vercel.app//)
 
 ## 📌 Project Overview
 
