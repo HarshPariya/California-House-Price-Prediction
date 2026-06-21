@@ -51,8 +51,16 @@ export default function Predictor() {
     setLoading(true);
     setError(null);
     try {
-      // In production, this should point to your Render backend URL
-      let rawApiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      // Determine the API URL based on the environment. 
+      // This guarantees it works on Vercel even if the Environment Variable was misconfigured!
+      let rawApiUrl = "https://california-house-price-prediction-ycx0.onrender.com";
+      
+      if (process.env.NODE_ENV === "development") {
+        rawApiUrl = "http://localhost:5000";
+      } else if (process.env.NEXT_PUBLIC_API_URL) {
+        rawApiUrl = process.env.NEXT_PUBLIC_API_URL;
+      }
+
       // Defensively remove any quotes (if added in Vercel), spaces, and trailing slashes
       const apiUrl = rawApiUrl.replace(/["']/g, "").trim().replace(/\/+$/, "");
       console.log("Making request to:", `${apiUrl}/api/predict`);
