@@ -142,6 +142,7 @@ export default function Predictor() {
                   className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
                   required
                 />
+                <p className="text-xs text-gray-500 mt-1">E.g., 3.5 means $35,000</p>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">House Age (Years)</label>
@@ -153,6 +154,7 @@ export default function Predictor() {
                   className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
                   required
                 />
+                <p className="text-xs text-gray-500 mt-1">Avg age of houses in block</p>
               </div>
             </div>
 
@@ -168,6 +170,7 @@ export default function Predictor() {
                   className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
                   required
                 />
+                <p className="text-xs text-gray-500 mt-1">Avg total rooms per house</p>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Avg Bedrooms</label>
@@ -180,6 +183,7 @@ export default function Predictor() {
                   className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
                   required
                 />
+                <p className="text-xs text-gray-500 mt-1">Avg bedrooms per house</p>
               </div>
             </div>
 
@@ -194,6 +198,7 @@ export default function Predictor() {
                   className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
                   required
                 />
+                <p className="text-xs text-gray-500 mt-1">Total people in the block</p>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Avg Occupancy</label>
@@ -206,6 +211,7 @@ export default function Predictor() {
                   className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
                   required
                 />
+                <p className="text-xs text-gray-500 mt-1">Avg people living per house</p>
               </div>
             </div>
 
@@ -223,6 +229,7 @@ export default function Predictor() {
                   className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
                   required
                 />
+                <p className="text-xs text-gray-500 mt-1">E.g., 34.0 (Southern CA)</p>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1 flex items-center">
@@ -237,6 +244,7 @@ export default function Predictor() {
                   className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none"
                   required
                 />
+                <p className="text-xs text-gray-500 mt-1">E.g., -118.0 (West Coast)</p>
               </div>
             </div>
 
