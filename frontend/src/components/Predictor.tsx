@@ -309,8 +309,8 @@ export default function Predictor() {
               <h2 className="text-2xl font-bold text-gray-800">Feature Comparison vs CA Average</h2>
             </div>
             
-            <div className="h-[300px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
+            <div className="h-[300px] w-full min-h-[300px]">
+              <ResponsiveContainer width="99%" height={300}>
                 <BarChart data={comparisonData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
                   <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6b7280', fontSize: 12}} />
