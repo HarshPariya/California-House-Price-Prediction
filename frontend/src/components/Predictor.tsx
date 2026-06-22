@@ -47,38 +47,38 @@ export default function Predictor() {
     });
   };
 
+  // Ping backend on load to wake it up from sleep (Render free tier)
   React.useEffect(() => {
-    const fetchPrediction = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        let rawApiUrl = "https://california-house-price-prediction-ycx0.onrender.com";
-        const apiUrl = rawApiUrl.replace(/["']/g, "").trim().replace(/\/+$/, "");
-        
-        // Ensure all values are numbers before sending
-        const payload = Object.fromEntries(
-          Object.entries(formData).map(([key, value]) => [key, Number(value) || 0])
-        );
+    let rawApiUrl = "https://california-house-price-prediction-ycx0.onrender.com";
+    const apiUrl = rawApiUrl.replace(/["']/g, "").trim().replace(/\/+$/, "");
+    axios.get(`${apiUrl}/api/health`).catch(() => {});
+  }, []);
 
-        const response = await axios.post(`${apiUrl}/api/predict`, payload);
-        if (response.data.status === "success") {
-          setPrediction(response.data.prediction);
-        } else {
-          setError(response.data.message || "An error occurred");
-        }
-      } catch (err: any) {
-        setError(err.response?.data?.message || err.message || "Failed to connect to backend.");
-      } finally {
-        setLoading(false);
+  const handlePredict = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    try {
+      let rawApiUrl = "https://california-house-price-prediction-ycx0.onrender.com";
+      const apiUrl = rawApiUrl.replace(/["']/g, "").trim().replace(/\/+$/, "");
+      
+      // Ensure all values are numbers before sending
+      const payload = Object.fromEntries(
+        Object.entries(formData).map(([key, value]) => [key, Number(value) || 0])
+      );
+
+      const response = await axios.post(`${apiUrl}/api/predict`, payload);
+      if (response.data.status === "success") {
+        setPrediction(response.data.prediction);
+      } else {
+        setError(response.data.message || "An error occurred");
       }
-    };
-
-    const debounceTimer = setTimeout(() => {
-      fetchPrediction();
-    }, 500);
-
-    return () => clearTimeout(debounceTimer);
-  }, [formData]);
+    } catch (err: any) {
+      setError(err.response?.data?.message || err.message || "Failed to connect to backend.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Data for the comparison chart
   const comparisonData = [
@@ -129,7 +129,7 @@ export default function Predictor() {
             <h2 className="text-2xl font-bold text-gray-800">Property Details</h2>
           </div>
           
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+          <form onSubmit={handlePredict} className="space-y-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">Median Income ($10k)</label>
@@ -240,22 +240,21 @@ export default function Predictor() {
               </div>
             </div>
 
-            <div className="w-full mt-6 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-teal-200 flex justify-center items-center transition-all duration-200">
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full mt-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-indigo-200 transform transition-all duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+            >
               {loading ? (
-                <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Updating Estimate...
-                </>
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
               ) : (
-                <>
-                  <TrendingUp className="mr-2 h-5 w-5" />
-                  Live Prediction Active
-                </>
+                <TrendingUp className="mr-2 h-5 w-5" />
               )}
-            </div>
+              {loading ? "Analyzing..." : "Predict Price"}
+            </button>
             
             {error && (
               <div className="mt-4 p-3 bg-red-50 text-red-600 rounded-lg border border-red-100 text-sm">
